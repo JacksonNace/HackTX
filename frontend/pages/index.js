@@ -1,22 +1,22 @@
 import Image from "next/image";
+import { useState } from 'react';
 import localFont from "next/font/local";
 
+// Define your fonts here
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
 
-import React from 'react';
-
 export default function Home() {
-  // Example progress value (out of 100)
-  const progress = 40; // Set this dynamically based on actual game progress
+  const [isChat, setIsChat] = useState(true); // State to toggle between chat and code editor
 
   return (
     <div
@@ -25,40 +25,6 @@ export default function Home() {
         backgroundImage: "url('https://cdna.artstation.com/p/assets/images/images/019/969/350/large/florian-mazreku-outcasts-background-final.jpg?1565792939')",
       }}
     >
-
-      {/* Progress Bar at the top */}
-      <div className="fixed z-50 flex items-center" style={{ top: '60px', left: '0', right: '570px' }}>
-        <div className="w-full px-4">
-          <div className="bg-gray-300 h-4">
-            <div
-              className="h-full bg-blue-500 transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-          {/* Increment Circles */}
-          <div className="absolute left-0 flex justify-between w-full">
-            <div className="flex flex-col items-center">
-              <div className="h-8 w-8 bg-white rounded-full flex items-center justify-center border border-black">
-                <span className="text-black">1</span>
-              </div>
-              <span className="text-xs mt-1">Start</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="h-8 w-8 bg-white rounded-full flex items-center justify-center border border-black">
-                <span className="text-black">2</span>
-              </div>
-              <span className="text-xs mt-1">Mid</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="h-8 w-8 bg-white rounded-full flex items-center justify-center border border-black">
-                <span className="text-black">3</span>
-              </div>
-              <span className="text-xs mt-1">End</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Character section on the left */}
       <div className="flex flex-col justify-end items-center w-[calc(100%-570px)] p-4 min-h-screen">
         <div className="flex items-center justify-between w-full px-8 mb-4">
@@ -98,18 +64,48 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Chatbox */}
+      {/* Chatbox or Code Editor */}
       <div className="fixed right-0 top-0 h-screen w-[570px] bg-white shadow-lg border-l border-gray-200 z-50 flex flex-col">
-        {/* Chatbox content */}
-        <h2 className="p-4 text-lg font-semibold text-black">Chat</h2>
-        <div className="p-4 overflow-y-auto h-[calc(100%-56px)]">
-          {/* Messages will be displayed here */}
+        {/* Toggle Buttons at Top Center */}
+        <div className="flex justify-center items-center p-4 border-b border-gray-200">
+          <button
+            onClick={() => setIsChat(true)}
+            className={`px-4 py-2 rounded-l-lg ${isChat ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'} transition`}
+          >
+            Chat
+          </button>
+          <button
+            onClick={() => setIsChat(false)}
+            className={`px-4 py-2 rounded-r-lg ${!isChat ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'} transition`}
+          >
+            Code Editor
+          </button>
         </div>
+
+        {/* Conditional Rendering for Chat or Code Editor */}
+        <div className="p-4 overflow-y-auto h-[calc(100%-56px)]">
+          {isChat ? (
+            <div>
+              <h2 className="text-lg font-semibold">Chat</h2>
+              {/* Chat Messages will be displayed here */}
+            </div>
+          ) : (
+            <div>
+              <h2 className="text-lg font-semibold text-black">Code Editor</h2>
+              {/* Your code editor component can go here */}
+              <textarea
+                className="w-full h-full border border-gray-300 p-2 text-black"
+                placeholder="Type your notes here..."
+              ></textarea>
+            </div>
+          )}
+        </div>
+
         <div className="p-4 border-t border-gray-200">
           <div className="flex items-center">
             <input
               type="text"
-              placeholder="Type a message..."
+              placeholder={isChat ? "Type a message..." : "Type code..."}
               className="flex-grow p-3 border border-gray-300 rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:border-transparent"
             />
             <button className="ml-2 bg-gray-800 text-white p-2 rounded-r-lg shadow hover:bg-gray-700 transition flex items-center justify-center">
