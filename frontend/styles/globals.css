@@ -1,17 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Silkscreen:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Specific styles for headings and paragraphs */
-h1, h2, h3, h4, h5, h6, p {
-    font-family: 'Silkscreen', sans-serif;
-}
-/* Apply Jersey 10 font as default */
+
 body {
   color: var(--foreground);
   background: var(--background);
-    font-family: 'Jersey 10', sans-serif;
+    font-family: 'Pixelify Sans', 'sans-serif';
 }
 
 /* Additional font styles */

@@ -57,44 +57,42 @@ export default function Home() {
 
         {/* Centered Question Box */}
         <div className="bg-white shadow-md p-4 rounded mb-8 w-full max-w-5xl h-auto text-black text-center">
-  <h2 className="text-lg font-semibold">Question</h2>
-  <p className="mt-2 text-sm md:text-base leading-relaxed">
+  <h2 className="text-lg font-semibold text-left antialiased">Question</h2>
+  <h1 className="p-2 text-black antialiased text-left">
     Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.
-  </p>
+  </h1>
         </div>
       </div>
+{/* Chatbox or Code Editor */}
+<div className="fixed right-0 top-0 h-screen w-[570px] bg-white shadow-lg border-l border-gray-200 z-50 flex flex-col">
+  {/* Toggle Buttons at Top Center */}
+  <div className="flex justify-center items-center p-4 border-b border-gray-200">
+    <button
+      onClick={() => setIsChat(true)}
+      className={`px-4 py-2 rounded-l-lg ${isChat ? 'bg-purple-800 text-white' : 'bg-gray-200 text-gray-800'} transition`}
+    >
+      <h2 className="text-lg font-semibold">Chat</h2>
+    </button>
+    <button
+      onClick={() => setIsChat(false)}
+      className={`px-4 py-2 rounded-r-lg ${!isChat ? 'bg-blue-800 text-white' : 'bg-gray-200 text-gray-800'} transition`}
+    >
+      <h2 className="text-lg font-semibold">Code Editor</h2>
+    </button>
+  </div>
 
-      {/* Chatbox or Code Editor */}
-      <div className="fixed right-0 top-0 h-screen w-[570px] bg-white shadow-lg border-l border-gray-200 z-50 flex flex-col">
-        {/* Toggle Buttons at Top Center */}
-        <div className="flex justify-center items-center p-4 border-b border-gray-200">
-          <button
-            onClick={() => setIsChat(true)}
-            className={`px-4 py-2 rounded-l-lg ${isChat ? 'bg-purple-800 text-white' : 'bg-gray-200 text-gray-800'} transition`}
-          >
-            Chat
-          </button>
-          <button
-            onClick={() => setIsChat(false)}
-            className={`px-4 py-2 rounded-r-lg ${!isChat ? 'bg-blue-800 text-white' : 'bg-gray-200 text-gray-800'} transition`}
-          >
-            Code Editor
-          </button>
-        </div>
 
         {/* Conditional Rendering for Chat or Code Editor */}
         <div className="p-4 overflow-y-auto h-[calc(100%-56px)]">
           {isChat ? (
             <div>
-              <h2 className={`text-lg font-semibold ${geistMono.variable}`}>Chat</h2>
-              {/* Chat Messages will be displayed here */}
             </div>
           ) : (
             <div>
-              <h2 className={`text-lg font-semibold text-black ${geistMono.variable}`}>Code Editor</h2>
+              <p3 className={`text-lg font-semibold text-black ${geistMono.variable}`}>Notes Section</p3>
               {/* Your code editor component can go here */}
               <textarea
-                className="w-full h-full border border-gray-300 p-2 text-black"
+                className="w-full h-full border border-gray-300 p-2 text-black antialiased"
                 placeholder="Type your notes here..."
               ></textarea>
             </div>
