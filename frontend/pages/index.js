@@ -22,7 +22,7 @@ export default function Home() {
     <div
       className={`flex relative min-h-screen bg-cover ${geistSans.variable} ${geistMono.variable}`}
       style={{
-        backgroundImage: "url('https://cdna.artstation.com/p/assets/images/images/019/969/350/large/florian-mazreku-outcasts-background-final.jpg?1565792939')",
+        backgroundImage: "url('/background.jpg')", // Changed to local image
       }}
     >
       {/* Character section on the left */}
@@ -30,6 +30,7 @@ export default function Home() {
         <div className="flex items-center justify-between w-full px-8 mb-4">
           {/* Mockey Character */}
           <div className="flex flex-col items-center">
+          <p className="text-xs">Health: 80/100</p>
             <div className="h-2 w-32 bg-gray-300 rounded mb-1">
               <div className="h-full bg-green-500" style={{ width: '80%' }}></div>
             </div>
@@ -38,20 +39,19 @@ export default function Home() {
               alt="Mockey"
               className="h-48 w-48 object-contain"
             />
-            <p className="text-xs">Health: 80/100</p>
           </div>
 
           {/* Cat Character */}
           <div className="flex flex-col items-center">
+          <p className="text-xs">Health: 60/100</p>
             <div className="h-2 w-32 bg-gray-300 rounded mb-1">
-              <div className="h-full bg-green-500" style={{ width: '60%' }}></div>
+              <div className="h-full bg-red-500" style={{ width: '60%' }}></div>
             </div>
             <img
               src="/cat.png"
               alt="Cat"
               className="h-48 w-48 object-contain"
             />
-            <p className="text-xs">Health: 60/100</p>
           </div>
         </div>
 
@@ -70,13 +70,13 @@ export default function Home() {
         <div className="flex justify-center items-center p-4 border-b border-gray-200">
           <button
             onClick={() => setIsChat(true)}
-            className={`px-4 py-2 rounded-l-lg ${isChat ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'} transition`}
+            className={`px-4 py-2 rounded-l-lg ${isChat ? 'bg-purple-800 text-white' : 'bg-gray-200 text-gray-800'} transition`}
           >
             Chat
           </button>
           <button
             onClick={() => setIsChat(false)}
-            className={`px-4 py-2 rounded-r-lg ${!isChat ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'} transition`}
+            className={`px-4 py-2 rounded-r-lg ${!isChat ? 'bg-blue-800 text-white' : 'bg-gray-200 text-gray-800'} transition`}
           >
             Code Editor
           </button>
