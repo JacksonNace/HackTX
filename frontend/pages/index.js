@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <div
-      className="flex relative min-h-screen bg-cover"
+      className={`flex relative min-h-screen bg-cover ${geistSans.variable} ${geistMono.variable}`}
       style={{
         backgroundImage: "url('https://cdna.artstation.com/p/assets/images/images/019/969/350/large/florian-mazreku-outcasts-background-final.jpg?1565792939')",
       }}
@@ -56,11 +56,11 @@ export default function Home() {
         </div>
 
         {/* Centered Question Box */}
-        <div className="bg-white shadow-md p-4 rounded mb-8 w-3/4 max-w-lg text-black text-center">
-          <h2 className="text-lg font-semibold">Question</h2>
-          <p className="mt-2">
-            Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.
-          </p>
+        <div className="bg-white shadow-md p-4 rounded mb-8 w-full max-w-5xl h-auto text-black text-center">
+  <h2 className="text-lg font-semibold">Question</h2>
+  <p className="mt-2 text-sm md:text-base leading-relaxed">
+    Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.
+  </p>
         </div>
       </div>
 
@@ -86,12 +86,12 @@ export default function Home() {
         <div className="p-4 overflow-y-auto h-[calc(100%-56px)]">
           {isChat ? (
             <div>
-              <h2 className="text-lg font-semibold">Chat</h2>
+              <h2 className={`text-lg font-semibold ${geistMono.variable}`}>Chat</h2>
               {/* Chat Messages will be displayed here */}
             </div>
           ) : (
             <div>
-              <h2 className="text-lg font-semibold text-black">Code Editor</h2>
+              <h2 className={`text-lg font-semibold text-black ${geistMono.variable}`}>Code Editor</h2>
               {/* Your code editor component can go here */}
               <textarea
                 className="w-full h-full border border-gray-300 p-2 text-black"
